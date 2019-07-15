@@ -5,7 +5,7 @@
 Import the library to your HTML document:
 
 ```javascript
-https://raw.githack.com/sesame-seed/poppy-link/master/dist/poppy.js
+<script src='https://raw.githack.com/sesame-seed/poppy-link/master/dist/poppy.js' />
 ```
 
 Once has been imported, you will get a `PoppyLink` instance in window object `window.PoppyLink`
