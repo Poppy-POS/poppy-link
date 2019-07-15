@@ -28,11 +28,12 @@ const ENDPOINTS = {
 type PaymentStatusResponse = { status: PaymentStatus }
 
 class Poppy {
-  requestPayment(amount: number, description: string): Promise<PaymentResult> {
+  requestPayment(toAddress: string, amount: number, description: string): Promise<PaymentResult> {
     const body = {
       currency: 'TRX',
       amount,
-      description
+      description,
+      address_target: toAddress
     }
     return fetchHelper<PaymentResult>(ENDPOINTS.REQUEST, 'POST', body)
   }
@@ -77,7 +78,7 @@ const fetchHelper = <T>(url: string, method: 'GET' | 'POST' = 'GET', body?: {[ke
 
   if (method === 'POST') {
     initOptions.method = method
-    initOptions.body = body as any
+    initOptions.body = JSON.stringify(body) as any
     initOptions.headers = {
       'Content-Type': 'application/json'
     }
